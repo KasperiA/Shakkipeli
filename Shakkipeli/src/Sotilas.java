@@ -1,0 +1,56 @@
+
+class Sotilas extends Nappula {
+	
+	private boolean ensimmainenSiirto;
+	
+	public Sotilas(boolean vari, char symboli) {
+		super.asetaSymboli(symboli);
+		super.asetaVari(vari);
+		this.ensimmainenSiirto = true;
+	}
+
+	@Override
+	public boolean liikkeenTarkistus(int x1, int y1, int x2, int y2) {
+		
+		/* Mustien liikkeiden erotukset y1 - y2 aina positiiviset ja valkoisten negatiiviset. 
+		 * Täytyy tehdä kummallekkin värille omat liikkeenTarkistukset, koska muuten ei toimisi odotetusti
+		 */
+		
+		/* Laudan ulkopuolelle ei voida siirtyä */
+
+		if (x2 > 7 || x2 < 0 || y2 > 7 || y2 < 0) {
+			return false;
+		}
+		
+		
+		
+		/* Vain ensimmäisellä siirrolla voidaan liikkua kaksi ruutua eteenpäin samalla linjalla*/
+				
+		if ((!this.annaVari() && ensimmainenSiirto && x1 == x2 && y2 - y1 == 2 && lauta.annaRuutu(x2, y2) == null && lauta.annaRuutu(x2, y2 - 1) == null) 
+				|| (this.annaVari() && ensimmainenSiirto && x1 == x2 && y2 - y1 == -2 && lauta.annaRuutu(x2, y2) == null && lauta.annaRuutu(x2, y2 + 1) == null)) {
+			this.ensimmainenSiirto = false;
+			return true;
+		}
+		
+		/* Normaali yhden ruudun liike eteenpäin samalla linjalla*/
+		
+		if ((!this.annaVari() && x1 == x2 && lauta.annaRuutu(x2,y2) == null && y1 - y2 == 1)
+				|| (this.annaVari() && x1 == x2 && lauta.annaRuutu(x2,y2) == null && y1 - y2 == -1)) {
+			return true;
+		}
+		
+		
+		
+		/* Syöminen yhden ruudun verran oikealle tai vasemmalle*/
+		
+		if ((!this.annaVari() && x1 - x2 == 1 && y1 - y2 == 1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari()) 
+				|| (!this.annaVari() && x1 - x2 == -1 && y1 - y2 == 1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())
+				|| (this.annaVari() && x1 - x2 == 1 && y1 - y2 == -1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())
+				|| (this.annaVari() && x1 - x2 == -1 && y1 - y2 == -1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())) {
+			return true;
+		}
+		
+		return false;
+	}
+
+}
