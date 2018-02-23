@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-abstract class Nappula {
+abstract class Nappula implements Serializable {
 	
 	private char symboli;
 	private boolean vari;
