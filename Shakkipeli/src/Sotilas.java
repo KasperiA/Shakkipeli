@@ -10,7 +10,7 @@ class Sotilas extends Nappula {
 	}
 
 	@Override
-	public boolean liikkeenTarkistus(int x1, int y1, int x2, int y2) {
+	public boolean liikkeenTarkistus(Pelilauta lauta, int x1, int y1, int x2, int y2) {
 		
 		/* Mustien liikkeiden erotukset y1 - y2 aina positiiviset ja valkoisten negatiiviset. 
 		 * Täytyy tehdä kummallekkin värille omat liikkeenTarkistukset, koska muuten ei toimisi odotetusti

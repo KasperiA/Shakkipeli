@@ -8,7 +8,7 @@ class Hevonen extends Nappula{
 	}
 
 	@Override
-	public boolean liikkeenTarkistus(int x1, int y1, int x2, int y2) {
+	public boolean liikkeenTarkistus(Pelilauta lauta, int x1, int y1, int x2, int y2) {
 		
 		/* Laudan ulkopuolelle ei voida siirtyä */
 
@@ -16,6 +16,19 @@ class Hevonen extends Nappula{
 			return false;
 		}
 		
+		/*Yhdestä ruudusta on mahdollista siirtyä 8 eri ruutuun
+		 * Myötäpäivään tehty liikkeet */
+		
+		if ((x1 - x2 == -1 && y1 - y2 == 2 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == -2 && y1 - y2 == 1 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == -2 && y1 - y2 == -1 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == -1 && y1 - y2 == -2 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == 1 && y1 - y2 == -2 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == 2 && y1 - y2 == -1 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == 2 && y1 - y2 == 1 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == 1 && y1 - y2 == 2 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))) {
+					return true;
+				}
 		
 		
 		return false;
