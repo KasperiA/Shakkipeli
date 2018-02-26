@@ -1,8 +1,12 @@
 
 public class Kuningas extends Nappula{
 	
-	public Kuningas(boolean vari, char symboli) {
-		super.asetaSymboli(symboli);
+	public Kuningas(boolean vari) {
+		if (this.annaVari()) {
+			super.asetaSymboli('K');
+		} else {
+			super.asetaSymboli('k');
+		}
 		super.asetaVari(vari);
 	}
 

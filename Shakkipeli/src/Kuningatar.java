@@ -1,8 +1,12 @@
 
 class Kuningatar extends Nappula{
 	
-	public Kuningatar(boolean vari, char symboli) {
-		super.asetaSymboli(symboli);
+	public Kuningatar(boolean vari) {
+		if (this.annaVari()) {
+			super.asetaSymboli('Q');
+		} else {
+			super.asetaSymboli('q');
+		}
 		super.asetaVari(vari);
 	}
 

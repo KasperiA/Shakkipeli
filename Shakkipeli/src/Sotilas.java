@@ -3,8 +3,15 @@ class Sotilas extends Nappula {
 	
 	private boolean ensimmainenSiirto;
 	
-	public Sotilas(boolean vari, char symboli) {
-		super.asetaSymboli(symboli);
+	public Sotilas(boolean vari) {
+		
+		if (this.annaVari()) {
+			super.asetaSymboli('S');
+		} else {
+			super.asetaSymboli('s');
+		}
+		
+		
 		super.asetaVari(vari);
 		this.ensimmainenSiirto = true;
 	}

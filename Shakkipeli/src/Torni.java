@@ -1,8 +1,12 @@
 
 class Torni extends Nappula{
 	
-	public Torni(boolean vari, char symboli) {
-		super.asetaSymboli(symboli);
+	public Torni(boolean vari) {
+		if (this.annaVari()) {
+			super.asetaSymboli('T');
+		} else {
+			super.asetaSymboli('t');
+		}
 		super.asetaVari(vari);
 	}
 

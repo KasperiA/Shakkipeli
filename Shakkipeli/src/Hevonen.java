@@ -2,8 +2,12 @@
 class Hevonen extends Nappula{
 	
 	
-	public Hevonen(boolean vari, char symboli) {
-		super.asetaSymboli(symboli);
+	public Hevonen(boolean vari) {
+		if (this.annaVari()) {
+			super.asetaSymboli('H');
+		} else {
+			super.asetaSymboli('h');
+		}
 		super.asetaVari(vari);
 	}
 
