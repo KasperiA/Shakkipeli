@@ -1,9 +1,12 @@
+import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.util.Scanner;
 
 /**
 @author Jaakko Kittilä
  */
+
+// Viimeksi jäi siirron tekemiseen
 
 public class Shakkipeli {
 
@@ -82,6 +85,8 @@ public class Shakkipeli {
 					((Torni) shakkilauta.annaRuutu(0, 0)).onkoMuitaValissa(shakkilauta, 0, 0, 4, 0) == false) {
 				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(0, 0), 3, 0);
 				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(4, 0), 2, 0);
+				shakkilauta.asetaRuutu(null, 0,0);
+				shakkilauta.asetaRuutu(null, 4, 0);
 				totuus = true;
 			} else {
 				System.out.println("Tornitus ei onnistunut.");
@@ -91,6 +96,8 @@ public class Shakkipeli {
 					((Torni) shakkilauta.annaRuutu(7, 0)).onkoMuitaValissa(shakkilauta, 7, 0, 4, 0) == false) {
 				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(7, 0), 5, 0);
 				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(4, 0), 6, 0);
+				shakkilauta.asetaRuutu(null, 7 ,0);
+				shakkilauta.asetaRuutu(null, 4, 0);
 				totuus = true;
 			} else {
 				System.out.println("Tornitus ei onnistunut.");
@@ -110,8 +117,9 @@ public class Shakkipeli {
 	 */
 	public static boolean teeSiirto(int x1, int y1, int x2, int y2, Shakkilauta shakkilauta){
 		Nappula nappula = shakkilauta.annaRuutu(x1, y1);
+		Nappula nappula1 = shakkilauta.annaRuutu(x2, y2);
 		boolean totuus = false ;
-		if (nappula.annaVari() == shakkilauta.annaPelivuoro()){
+		if (nappula.annaVari() == shakkilauta.annaPelivuoro() && nappula1.annaVari() != nappula.annaVari() && !(nappula1 instanceof Kuningas) ){
 			if(nappula.liikkeenTarkistus(shakkilauta, x1, y1, x2, y2)){
 				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(x1, y1), x2, y2);
 				shakkilauta.asetaRuutu(null, x1, y1);
