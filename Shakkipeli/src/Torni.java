@@ -7,7 +7,7 @@ class Torni extends Nappula{
 	}
 
 	@Override
-	public boolean liikkeenTarkistus(Pelilauta lauta, int x1, int y1, int x2, int y2) {
+	public boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		
 		/* Laudan ulkopuolelle ei voida siirtyä, 
 		 * Eikä voi liikkua vinoittain*/
@@ -25,7 +25,7 @@ class Torni extends Nappula{
 	
 	/* Tarkistaa onko nappulan alku- ja loppupaikan välillä muita nappuloita. Palauttaa false jos ei ole */
 	
-	public boolean onkoMuitaValissa(Pelilauta lauta, int x1, int y1, int x2, int y2) {
+	public boolean onkoMuitaValissa(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		if (x1 == x2) {
 			if (y1 < y2) {
 				for (int i = y2; i > y1; i--) {
@@ -52,14 +52,13 @@ class Torni extends Nappula{
 			}
 			if (x1 > x2) {
 				for (int i = x1; i > x2; i--) {
-					if (lauta.annaRuutu(y2, i)) != null) {
+					if (lauta.annaRuutu(y2, i) != null) {
 						return true;
 					}
 				}
 			}
 		}
-		
-		return false;
 		}
+		return false;
 	}
 }

@@ -5,7 +5,7 @@ abstract class Nappula implements Serializable {
 	private char symboli;
 	private boolean vari;
 	
-	public abstract boolean liikkeenTarkistus(Pelilauta lauta, int x1, int y1, int x2, int y2);
+	public abstract boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int y1, int x2, int y2);
 	
 	
 	public char annaSymboli() {

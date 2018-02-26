@@ -7,7 +7,7 @@ class Lahetti extends Nappula{
 	}
 
 	@Override
-	public boolean liikkeenTarkistus(Pelilauta lauta, int x1, int y1, int x2, int y2) {
+	public boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		
 		/* Laudan ulkopuolelle ei voida siirtyä */
 
