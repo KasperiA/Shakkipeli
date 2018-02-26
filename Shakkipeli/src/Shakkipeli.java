@@ -1,12 +1,10 @@
-import com.sun.org.apache.xpath.internal.SourceTree;
+
 
 import java.util.Scanner;
 
 /**
 @author Jaakko Kittilä
  */
-
-// Viimeksi jäi siirron tekemiseen
 
 public class Shakkipeli {
 
