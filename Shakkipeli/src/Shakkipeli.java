@@ -6,6 +6,8 @@ import java.util.Scanner;
 @author Jaakko Kittilä
  */
 
+
+
 public class Shakkipeli {
 
 	public static void main(String[] args) {
@@ -15,6 +17,7 @@ public class Shakkipeli {
 			shakkilauta = shakkilauta.lataa();
 			if (shakkilauta == null) {
 				System.out.println("Alustetaan uusi lauta");
+				shakkilauta.alusta();
 			}
 			shakkilauta.tulosta();
 			if (shakkilauta.annaPelivuoro()){
