@@ -168,9 +168,9 @@ class Shakkilauta implements Serializable {
 
 			// ensin rivi pelkästään ruudukolle
 			if (y == 0)
-				System.out.println("╔═╤═╤═╤═╤═╤═╤═╤═╗");
+				System.out.println(" ╔═╤═╤═╤═╤═╤═╤═╤═╗");
 			else
-				System.out.println("╟─┼─┼─┼─┼─┼─┼─┼─╢");
+				System.out.println(" ╟─┼─┼─┼─┼─┼─┼─┼─╢");
 
 			// sitten itse pelilaudan sisältö rivillä y pystykoordinaattien kera
 			System.out.print(y + 1 + "║");
@@ -188,7 +188,7 @@ class Shakkilauta implements Serializable {
 			}
 		}
 		// lopuksi viimeinen osa ruudukkoa
-		System.out.println("╚═╧═╧═╧═╧═╧═╧═╧═╝");
-		System.out.println(pelivuoro ? "Valkoisella" : "Mustalla" + " on pelivuoro.");
+		System.out.println(" ╚═╧═╧═╧═╧═╧═╧═╧═╝");
+		System.out.println((pelivuoro ? "Valkoisella" : "Mustalla") + " on pelivuoro.");
 	}
 }
