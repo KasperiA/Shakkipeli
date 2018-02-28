@@ -11,27 +11,26 @@ import java.util.Scanner;
 public class Shakkipeli {
 
 	public static void main(String[] args) {
-		Shakkilauta shakkilauta = new Shakkilauta();
-			shakkilauta = shakkilauta.lataa();
-			if (shakkilauta == null) {
-				shakkilauta = new Shakkilauta();
-				System.out.println("Alustetaan uusi lauta");
-				shakkilauta.alusta();
-			}
+		
+		Scanner lukija = new Scanner(System.in);
+		
+		Shakkilauta shakkilauta = new Shakkilauta(lukija);
+		shakkilauta = shakkilauta.lataa();
+		if (shakkilauta == null) {
+			shakkilauta = new Shakkilauta(lukija);
+			System.out.println("Alustetaan uusi lauta");
+			shakkilauta.alusta();
+		}
 
 		while (true) {
 
 			shakkilauta.tulosta();
-			if (shakkilauta.annaPelivuoro()){
-				System.out.println("Valkoisen vuoro");
-			}else{
-				System.out.println("Mustan vuoro");
-			}
+			
 			System.out.println("Anna siirrot muodossa RUUTU1>RUUTU2 esim. A1>B2, muista isot kirjaimet!");
-		System.out.println("Lyhyt tornitus tapahtuu syötteellä O-O ja pitkä syötteellä O-O-O.");
-		System.out.println("Poistuminen tapahtuu syötteellä exit.");
-		Scanner valinta = new Scanner(System.in);
-		String valittu = valinta.nextLine();
+			System.out.println("Lyhyt tornitus tapahtuu syötteellä O-O ja pitkä syötteellä O-O-O.");
+			System.out.println("Poistuminen tapahtuu syötteellä exit.");
+			
+			String valittu = lukija.nextLine();
 
 
 			switch (valittu){
