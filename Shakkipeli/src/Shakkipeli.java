@@ -116,20 +116,38 @@ public class Shakkipeli {
 	 * @return palauttaa totuusarvon riippuen tehtiinki siirto vai ei
 	 */
 	public static boolean teeSiirto(int x1, int y1, int x2, int y2, Shakkilauta shakkilauta){
+		
+		if (x1 > 7 || x1 < 0 || y1 > 7 || y1 < 0 || x2 > 7 || x2 < 0 || y2 > 7 || y2 < 0) {
+			System.out.println("Ainakin toinen ruuduista laudan ulkopuolella!");
+			return false;
+		}
+		
 		Nappula nappula = shakkilauta.annaRuutu(x1, y1);
 		Nappula nappula1 = shakkilauta.annaRuutu(x2, y2);
-		boolean totuus = false ;
-		if (nappula.annaVari() == shakkilauta.annaPelivuoro() && nappula1.annaVari() != nappula.annaVari() && !(nappula1 instanceof Kuningas) ){
-			if(nappula.liikkeenTarkistus(shakkilauta, x1, y1, x2, y2)){
-				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(x1, y1), x2, y2);
-				shakkilauta.asetaRuutu(null, x1, y1);
-				totuus = true;
-			}else{
-				System.out.println("Ei ole sallittu siirto.");
+		boolean totuus = false;
+		String viesti = "";
+		
+		if (nappula != null) {
+			if (nappula.annaVari() == shakkilauta.annaPelivuoro()){
+				if (nappula1 == null || nappula1.annaVari() != nappula.annaVari()) {
+					if (nappula.liikkeenTarkistus(shakkilauta, x1, y1, x2, y2)){
+						shakkilauta.asetaRuutu(shakkilauta.annaRuutu(x1, y1), x2, y2);
+						shakkilauta.asetaRuutu(null, x1, y1);
+						totuus = true;
+						viesti = "Siirto onnistui!";
+					} else {
+						viesti = "Ei ole sallittu siirto!";
+					}
+				} else {
+					viesti = "Kohderuutuun ei voi siirtää!"; 
+				}
+			} else {
+				viesti = "Yrität siirtää väärän pelaajan nappulaa!";
 			}
-		}else{
-			System.out.println("Yrität siirtää väärän pelaajan nappulaa.");
+		} else {
+			viesti = "Ruudussa ei ole nappulaa";
 		}
+		System.out.println(viesti);
 		return totuus;
 
 	}
