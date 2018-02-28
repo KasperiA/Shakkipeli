@@ -20,7 +20,7 @@ class Shakkilauta implements Serializable {
 
 	public Shakkilauta() {
 		pelivuoro = true;
-		lauta = new Nappula[7][7];
+		lauta = new Nappula[8][8];
 	}
 
 	/**
