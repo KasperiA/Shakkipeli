@@ -17,8 +17,10 @@ class Shakkilauta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private boolean pelivuoro; // false mustalla, true valkoisella
 	private Nappula[][] lauta;
+	private Scanner lukija;
 
-	public Shakkilauta() {
+	public Shakkilauta(Scanner sc) {
+		lukija = sc;
 		pelivuoro = true;
 		lauta = new Nappula[8][8];
 	}
@@ -110,7 +112,7 @@ class Shakkilauta implements Serializable {
 	 */
 	public void tallenna() {
 
-		try (Scanner lukija = new Scanner(System.in);) {
+		try {
 			System.out.println("Minkä nimiseen tiedostoon haluat pelin tallennettavan?");
 			FileOutputStream tiedosto = new FileOutputStream(lukija.nextLine() + ".ser");
 			ObjectOutputStream out = new ObjectOutputStream(tiedosto);
@@ -136,7 +138,7 @@ class Shakkilauta implements Serializable {
 
 		Shakkilauta tmp = null;
 
-		try (Scanner lukija = new Scanner(System.in);) {
+		try {
 			System.out.println("Minkä nimisestä tiedostosta haluat pelin ladattavan?");
 			FileInputStream tiedosto = new FileInputStream(lukija.nextLine() + ".ser");
 			ObjectInputStream in = new ObjectInputStream(tiedosto);
