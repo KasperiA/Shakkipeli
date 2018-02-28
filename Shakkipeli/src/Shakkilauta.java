@@ -148,10 +148,9 @@ class Shakkilauta implements Serializable {
 			System.out.println("Tiedostoa ei löytynyt.");
 		} catch (Exception e) {
 			System.out.println("Lataus epäonnistui.");
-		} finally {
-			// palauttaa joko aiemmin tallennetun shakkilaudan tai null
-			return tmp;
 		}
+		// palauttaa joko aiemmin tallennetun shakkilaudan tai null
+		return tmp;
 	}
 
 	/**
