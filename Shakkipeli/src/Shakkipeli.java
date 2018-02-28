@@ -11,22 +11,30 @@ import java.util.Scanner;
 public class Shakkipeli {
 
 	public static void main(String[] args) {
-
-		while (true) {
-			Shakkilauta shakkilauta = new Shakkilauta();
+		Shakkilauta shakkilauta = new Shakkilauta();
 			shakkilauta = shakkilauta.lataa();
 			if (shakkilauta == null) {
+				shakkilauta = new Shakkilauta();
 				System.out.println("Alustetaan uusi lauta");
 				shakkilauta.alusta();
 			}
+
+		while (true) {
+
 			shakkilauta.tulosta();
 			if (shakkilauta.annaPelivuoro()){
 				System.out.println("Valkoisen vuoro");
 			}else{
 				System.out.println("Mustan vuoro");
 			}
-			String syote = kysySyote();
-			switch (syote){
+			System.out.println("Anna siirrot muodossa RUUTU1>RUUTU2 esim. A1>B2, muista isot kirjaimet!");
+		System.out.println("Lyhyt tornitus tapahtuu syötteellä O-O ja pitkä syötteellä O-O-O.");
+		System.out.println("Poistuminen tapahtuu syötteellä exit.");
+		Scanner valinta = new Scanner(System.in);
+		String valittu = valinta.nextLine();
+
+
+			switch (valittu){
 				case "O-O":
 					boolean tornitus1 = teeTornitus(false, shakkilauta);
 					if (tornitus1){
@@ -40,9 +48,10 @@ public class Shakkipeli {
 					}
 					break;
 				case "exit":
+					shakkilauta.tallenna();
 					System.exit(0);
 				default:
-					String[] siirto = syote.split(">");
+					String[] siirto = valittu.split(">");
 					String ruutu1 = siirto[0].charAt(0) - 'A' +  String.valueOf(siirto[0].charAt(1));
 					String ruutu2 = siirto[1].charAt(0) - 'A' + String.valueOf(siirto[1].charAt(1));
 					boolean totuus = teeSiirto(Integer.parseInt(ruutu1.substring(0,1)),
@@ -54,7 +63,7 @@ public class Shakkipeli {
 					}
 
 			}
-		shakkilauta.tallenna();
+		
 		}
 	}
 
@@ -63,16 +72,7 @@ public class Shakkipeli {
 	 * @return String
 	 * Kysytään käyttäjältä, mitä pelissä tehdään seuraavaksi
 	 */
-	public static String kysySyote(){
-		System.out.println("Anna siirrot muodossa RUUTU1>RUUTU2 esim. A1>B2, muista isot kirjaimet!");
-		System.out.println("Lyhyt tornitus tapahtuu syötteellä O-O ja pitkä syötteellä O-O-O.");
-		System.out.println("Poistuminen tapahtuu syötteellä exit.");
-		Scanner scanner = new Scanner(System.in);
-		String palautus = scanner.nextLine();
-		return palautus;
 
-
-	}
 
 	/**
 	 * Metodi erikoissiirtoa, tornitusta varten
