@@ -20,7 +20,17 @@ class Torni extends Nappula{
 			return false;
 		}
 		
-		if (!onkoMuitaValissa(lauta, x1, x2, y1, y2) && (lauta.annaRuutu(x2, y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2, y2) == null)) {
+		boolean nappulaVari = false;
+		
+		try {
+			if (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari()) {
+				nappulaVari = true;
+			}
+		} catch (Exception e) {
+			nappulaVari = false;
+		}
+		
+		if (!onkoMuitaValissa(lauta, x1, x2, y1, y2) && (nappulaVari || lauta.annaRuutu(x2, y2) == null)) {
 			return true;
 		}
 		

@@ -23,14 +23,24 @@ class Hevonen extends Nappula{
 		/*Yhdestä ruudusta on mahdollista siirtyä 8 eri ruutuun
 		 * Myötäpäivään tehty liikkeet */
 		
-		if ((x1 - x2 == -1 && y1 - y2 == 2 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
-				||(x1 - x2 == -2 && y1 - y2 == 1 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
-				||(x1 - x2 == -2 && y1 - y2 == -1 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
-				||(x1 - x2 == -1 && y1 - y2 == -2 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
-				||(x1 - x2 == 1 && y1 - y2 == -2 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
-				||(x1 - x2 == 2 && y1 - y2 == -1 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
-				||(x1 - x2 == 2 && y1 - y2 == 1 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))
-				||(x1 - x2 == 1 && y1 - y2 == 2 && (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari() || lauta.annaRuutu(x2,y2) == null))) {
+		boolean nappulaVari = false;
+		
+		try {
+			if (lauta.annaRuutu(x2,y2).annaVari() != this.annaVari()) {
+				nappulaVari = true;
+			}
+		} catch (Exception e) {
+			nappulaVari = false;
+		}
+		
+		if ((x1 - x2 == -1 && y1 - y2 == 2 && (nappulaVari || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == -2 && y1 - y2 == 1 && (nappulaVari || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == -2 && y1 - y2 == -1 && (nappulaVari || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == -1 && y1 - y2 == -2 && (nappulaVari || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == 1 && y1 - y2 == -2 && (nappulaVari || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == 2 && y1 - y2 == -1 && (nappulaVari || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == 2 && y1 - y2 == 1 && (nappulaVari || lauta.annaRuutu(x2,y2) == null))
+				||(x1 - x2 == 1 && y1 - y2 == 2 && (nappulaVari || lauta.annaRuutu(x2,y2) == null))) {
 					return true;
 				}
 		
