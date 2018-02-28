@@ -17,10 +17,12 @@ class Shakkilauta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private boolean pelivuoro; // false mustalla, true valkoisella
 	private Nappula[][] lauta;
+	private Scanner lukija;
 
-	public Shakkilauta() {
+	public Shakkilauta(Scanner sc) {
+		lukija = sc;
 		pelivuoro = true;
-		lauta = new Nappula[7][7];
+		lauta = new Nappula[8][8];
 	}
 
 	/**
@@ -110,7 +112,7 @@ class Shakkilauta implements Serializable {
 	 */
 	public void tallenna() {
 
-		try (Scanner lukija = new Scanner(System.in);) {
+		try {
 			System.out.println("Minkä nimiseen tiedostoon haluat pelin tallennettavan?");
 			FileOutputStream tiedosto = new FileOutputStream(lukija.nextLine() + ".ser");
 			ObjectOutputStream out = new ObjectOutputStream(tiedosto);
@@ -136,7 +138,7 @@ class Shakkilauta implements Serializable {
 
 		Shakkilauta tmp = null;
 
-		try (Scanner lukija = new Scanner(System.in);) {
+		try {
 			System.out.println("Minkä nimisestä tiedostosta haluat pelin ladattavan?");
 			FileInputStream tiedosto = new FileInputStream(lukija.nextLine() + ".ser");
 			ObjectInputStream in = new ObjectInputStream(tiedosto);
@@ -148,10 +150,9 @@ class Shakkilauta implements Serializable {
 			System.out.println("Tiedostoa ei löytynyt.");
 		} catch (Exception e) {
 			System.out.println("Lataus epäonnistui.");
-		} finally {
-			// palauttaa joko aiemmin tallennetun shakkilaudan tai null
-			return tmp;
 		}
+		// palauttaa joko aiemmin tallennetun shakkilaudan tai null
+		return tmp;
 	}
 
 	/**
@@ -168,9 +169,9 @@ class Shakkilauta implements Serializable {
 
 			// ensin rivi pelkästään ruudukolle
 			if (y == 0)
-				System.out.println("╔═╤═╤═╤═╤═╤═╤═╤═╗");
+				System.out.println(" ╔═╤═╤═╤═╤═╤═╤═╤═╗");
 			else
-				System.out.println("╟─┼─┼─┼─┼─┼─┼─┼─╢");
+				System.out.println(" ╟─┼─┼─┼─┼─┼─┼─┼─╢");
 
 			// sitten itse pelilaudan sisältö rivillä y pystykoordinaattien kera
 			System.out.print(y + 1 + "║");
@@ -188,7 +189,7 @@ class Shakkilauta implements Serializable {
 			}
 		}
 		// lopuksi viimeinen osa ruudukkoa
-		System.out.println("╚═╧═╧═╧═╧═╧═╧═╧═╝");
-		System.out.println(pelivuoro ? "Valkoisella" : "Mustalla" + " on pelivuoro.");
+		System.out.println(" ╚═╧═╧═╧═╧═╧═╧═╧═╝");
+		System.out.println((pelivuoro ? "Valkoisella" : "Mustalla") + " on pelivuoro.");
 	}
 }
