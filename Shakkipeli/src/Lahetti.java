@@ -35,6 +35,65 @@ class Lahetti extends Nappula{
 	
 	public boolean onkoMuitaValissa(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		
+		/* Neljä suuntaa, pitää tarkistaa mihin suuntaan ollaan liikkumassa */
+		
+		
+		//alavasen
+		if (x1 - x2 > 0 && y1 - y2 < 0) {
+			int x = x1;
+			int y = y1;
+			
+			while (x > x2 && y < y2) {
+				if (lauta.annaRuutu(x, y) != null)  {
+					return true;
+				}
+				x--;
+				y++;
+			}
+		}
+		
+		//ylävasen
+		if (x1 - x2 > 0 && y1 - y2 > 0) {
+			int x = x1;
+			int y = y1;
+			
+			while (x > x2 && y > y2) {
+				if (lauta.annaRuutu(x, y) != null)  {
+					return true;
+				}
+				x--;
+				y--;
+			}
+		}
+		
+		//yläoikea
+		if (x1 - x2 < 0 && y1 - y2 > 0) {
+			int x = x1;
+			int y = y1;
+			
+			while (x < x2 && y > y2) {
+				if (lauta.annaRuutu(x, y) != null)  {
+					return true;
+				}
+				x++;
+				y--;
+			}
+		}
+		
+		//alaoikea
+		if (x1 - x2 < 0 && y1 - y2 < 0) {
+			int x = x1;
+			int y = y1;
+			
+			while (x < x2 && y < y2) {
+				if (lauta.annaRuutu(x, y) != null)  {
+					return true;
+				}
+				x++;
+				y++;
+			}
+		}
+		
 		return false;
 	}
 }
