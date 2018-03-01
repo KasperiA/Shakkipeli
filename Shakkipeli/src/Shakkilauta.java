@@ -42,6 +42,14 @@ class Shakkilauta implements Serializable {
 	}
 
 	/**
+	 * Metodi asettaa luokalle uuden skannerin, mikä tulee tehdä aina latauksien jälkeen.
+	 * @param sc Scanner, joka asetetaan
+	 */
+	public void annaLukija(Scanner sc) {
+		lukija = sc;
+	}
+	
+	/**
 	 * Metodi palauttaa shakkilaudan tietystä ruudusta löytyvän Nappulan.
 	 * 
 	 * @param x
