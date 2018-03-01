@@ -43,6 +43,7 @@ class Sotilas extends Nappula {
 		
 		if ((!this.annaVari() && x1 == x2 && lauta.annaRuutu(x2,y2) == null && y1 - y2 == 1)
 				|| (this.annaVari() && x1 == x2 && lauta.annaRuutu(x2,y2) == null && y1 - y2 == -1)) {
+			this.ensimmainenSiirto = false;
 			return true;
 		}
 		
@@ -54,6 +55,7 @@ class Sotilas extends Nappula {
 				|| (!this.annaVari() && x1 - x2 == -1 && y1 - y2 == 1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())
 				|| (this.annaVari() && x1 - x2 == 1 && y1 - y2 == -1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())
 				|| (this.annaVari() && x1 - x2 == -1 && y1 - y2 == -1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())) {
+			this.ensimmainenSiirto = false;
 			return true;
 		}
 		
