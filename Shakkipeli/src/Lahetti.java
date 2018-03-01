@@ -2,7 +2,7 @@
 class Lahetti extends Nappula{
 	
 	public Lahetti(boolean vari) {
-		if (this.annaVari()) {
+		if (vari) {
 			super.asetaSymboli('L');
 		} else {
 			super.asetaSymboli('l');
@@ -13,14 +13,14 @@ class Lahetti extends Nappula{
 	@Override
 	public boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		
-		/* Laudan ulkopuolelle ei voida siirtyä,
-		 * Eikä muuten kuin vinottain*/
+		/* Laudan ulkopuolelle ei voida siirtyÃ¤,
+		 * EikÃ¤ muuten kuin vinottain*/
 
 		if (x2 > 7 || x2 < 0 || y2 > 7 || y2 < 0 || (x1 != x2 && y1 == y2) || (x1 == x2 && y1 != y2)) {
 			return false;
 		}
 		
-		/*Nappula liikkuu vinoittain, kun sen alku- ja loppukoordinaattien erotuksien itseisarvot ovat yhtä suuret |x1 - x2| = |y1 - y2| */
+		/*Nappula liikkuu vinoittain, kun sen alku- ja loppukoordinaattien erotuksien itseisarvot ovat yhtÃ¤ suuret |x1 - x2| = |y1 - y2| */
 		
 		if (!onkoMuitaValissa(lauta, x1, y1, x2, y2) && Math.abs(x1 - x2) == Math.abs(y1 - y2)) {
 			return true;
@@ -31,11 +31,11 @@ class Lahetti extends Nappula{
 		return false;
 	}
 	
-	/*Tarkistaa onko alku ja loppuruudun välissä muita nappuloita, jos ei ole niin palauttaa false*/
+	/*Tarkistaa onko alku ja loppuruudun vÃ¤lissÃ¤ muita nappuloita, jos ei ole niin palauttaa false*/
 	
 	public boolean onkoMuitaValissa(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		
-		/* Neljä suuntaa, pitää tarkistaa mihin suuntaan ollaan liikkumassa */
+		/* NeljÃ¤ suuntaa, pitÃ¤Ã¤ tarkistaa mihin suuntaan ollaan liikkumassa */
 		
 		
 		//alavasen
@@ -52,7 +52,7 @@ class Lahetti extends Nappula{
 			}
 		}
 		
-		//ylävasen
+		//ylÃ¤vasen
 		if (x1 - x2 > 0 && y1 - y2 > 0) {
 			int x = x1;
 			int y = y1;
@@ -66,7 +66,7 @@ class Lahetti extends Nappula{
 			}
 		}
 		
-		//yläoikea
+		//ylÃ¤oikea
 		if (x1 - x2 < 0 && y1 - y2 > 0) {
 			int x = x1;
 			int y = y1;
