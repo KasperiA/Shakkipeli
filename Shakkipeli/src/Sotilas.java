@@ -5,7 +5,7 @@ class Sotilas extends Nappula {
 	
 	public Sotilas(boolean vari) {
 		
-		if (this.annaVari()) {
+		if (vari) {
 			super.asetaSymboli('S');
 		} else {
 			super.asetaSymboli('s');
