@@ -1,5 +1,4 @@
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -17,7 +16,7 @@ class Shakkilauta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private boolean pelivuoro; // false mustalla, true valkoisella
 	private Nappula[][] lauta;
-	private Scanner lukija;
+	private transient Scanner lukija;
 
 	public Shakkilauta(Scanner sc) {
 		lukija = sc;
@@ -146,8 +145,6 @@ class Shakkilauta implements Serializable {
 			in.close();
 			tiedosto.close();
 			System.out.println("Lataus onnistui.");
-		} catch (FileNotFoundException f) {
-			System.out.println("Tiedostoa ei löytynyt.");
 		} catch (Exception e) {
 			System.out.println("Lataus epäonnistui.");
 		}
@@ -163,15 +160,15 @@ class Shakkilauta implements Serializable {
 	public void tulosta() {
 
 		// koordinaattirivi alkuun
-		System.out.println("  A B C D E F G H");
+		System.out.println("   A   B   C   D   E   F   G   H");
 
 		for (int y = 0; y < 8; y++) {
 
 			// ensin rivi pelkästään ruudukolle
 			if (y == 0)
-				System.out.println(" ╔═╤═╤═╤═╤═╤═╤═╤═╗");
+				System.out.println(" ╔═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╗");
 			else
-				System.out.println(" ╟─┼─┼─┼─┼─┼─┼─┼─╢");
+				System.out.println(" ╟───┼───┼───┼───┼───┼───┼───┼───╢");
 
 			// sitten itse pelilaudan sisältö rivillä y pystykoordinaattien kera
 			System.out.print(y + 1 + "║");
@@ -179,17 +176,17 @@ class Shakkilauta implements Serializable {
 
 				// jos nappulaa ei ole ruudussa tulostetaan vain väli
 				if (lauta[x][y] != null)
-					System.out.print(lauta[x][y].annaSymboli());
+					System.out.print(" " + lauta[x][y].annaSymboli());
 				else
-					System.out.print(" ");
+					System.out.print("  ");
 
 				// joka kerralla tulostetaan myös osa ruudukkoa (ja rivinvaihto
 				// rivin lopussa)
-				System.out.print((x != 7) ? "│" : "║\n");
+				System.out.print((x != 7) ? " │" : " ║\n");
 			}
 		}
 		// lopuksi viimeinen osa ruudukkoa
-		System.out.println(" ╚═╧═╧═╧═╧═╧═╧═╧═╝");
+		System.out.println(" ╚═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╝");
 		System.out.println((pelivuoro ? "Valkoisella" : "Mustalla") + " on pelivuoro.");
 	}
 }
