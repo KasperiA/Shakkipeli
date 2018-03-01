@@ -54,9 +54,9 @@ public class Shakkipeli {
 					String ruutu1 = siirto[0].charAt(0) - 'A' +  String.valueOf(siirto[0].charAt(1));
 					String ruutu2 = siirto[1].charAt(0) - 'A' + String.valueOf(siirto[1].charAt(1));
 					boolean totuus = teeSiirto(Integer.parseInt(ruutu1.substring(0,1)),
-							Integer.parseInt(ruutu1.substring(1,2)),
+							Integer.parseInt(ruutu1.substring(1,2)+1),
 							Integer.parseInt(ruutu2.substring(0,1)),
-							Integer.parseInt(ruutu2.substring(1,2)), shakkilauta);
+							Integer.parseInt(ruutu2.substring(1,2)+1), shakkilauta);
 					if (totuus){
 						shakkilauta.vaihdaPelivuoro();
 					}
