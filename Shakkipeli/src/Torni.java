@@ -2,7 +2,7 @@
 class Torni extends Nappula{
 	
 	public Torni(boolean vari) {
-		if (this.annaVari()) {
+		if (vari) {
 			super.asetaSymboli('T');
 		} else {
 			super.asetaSymboli('t');
@@ -13,8 +13,8 @@ class Torni extends Nappula{
 	@Override
 	public boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		
-		/* Laudan ulkopuolelle ei voida siirtyä, 
-		 * Eikä voi liikkua vinoittain*/
+		/* Laudan ulkopuolelle ei voida siirtyÃ¤, 
+		 * EikÃ¤ voi liikkua vinoittain*/
 
 		if (x2 > 7 || x2 < 0 || y2 > 7 || y2 < 0 || (x1 != x2 && y1 != y2)) {
 			return false;
@@ -37,7 +37,7 @@ class Torni extends Nappula{
 		return false;
 	}
 	
-	/* Tarkistaa onko nappulan alku- ja loppupaikan välillä muita nappuloita. Palauttaa false jos ei ole */
+	/* Tarkistaa onko nappulan alku- ja loppupaikan vÃ¤lillÃ¤ muita nappuloita. Palauttaa false jos ei ole */
 	
 	public boolean onkoMuitaValissa(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		if (x1 == x2) {
