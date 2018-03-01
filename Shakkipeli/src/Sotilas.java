@@ -1,4 +1,4 @@
-
+﻿
 class Sotilas extends Nappula {
 	
 	private boolean ensimmainenSiirto;
@@ -33,8 +33,8 @@ class Sotilas extends Nappula {
 		
 		/* Vain ensimm�isell� siirrolla voidaan liikkua kaksi ruutua eteenp�in samalla linjalla*/
 				
-		if ((!this.annaVari() && ensimmainenSiirto && x1 == x2 && y1 - y2 == 2 && lauta.annaRuutu(x2, y2) == null && lauta.annaRuutu(x2, y2 - 1) == null) 
-				|| (this.annaVari() && ensimmainenSiirto && x1 == x2 && y1 - y2 == -2 && lauta.annaRuutu(x2, y2) == null && lauta.annaRuutu(x2, y2 + 1) == null)) {
+		if ((!this.annaVari() && ensimmainenSiirto && x1 == x2 && y1 - y2 == 2 && lauta.annaRuutu(x2, y2) == null && lauta.annaRuutu(x2, y2 + 1) == null) 
+				|| (this.annaVari() && ensimmainenSiirto && x1 == x2 && y1 - y2 == -2 && lauta.annaRuutu(x2, y2) == null && lauta.annaRuutu(x2, y2 - 1) == null)) {
 			this.ensimmainenSiirto = false;
 			return true;
 		}
