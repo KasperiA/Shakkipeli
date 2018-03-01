@@ -26,11 +26,11 @@ public class Shakkipeli {
 
 			shakkilauta.tulosta();
 			
-			System.out.println("Anna siirrot muodossa RUUTU1>RUUTU2 esim. A1>B2, muista isot kirjaimet!");
+			System.out.println("Anna siirrot muodossa RUUTU1>RUUTU2 esim. A1>B2");
 			System.out.println("Lyhyt tornitus tapahtuu syötteellä O-O ja pitkä syötteellä O-O-O.");
 			System.out.println("Poistuminen tapahtuu syötteellä exit.");
 			
-			String valittu = lukija.nextLine();
+			String valittu = lukija.nextLine().toUpperCase();
 
 
 			switch (valittu){
