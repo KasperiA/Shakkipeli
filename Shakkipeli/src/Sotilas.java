@@ -23,7 +23,7 @@ class Sotilas extends Nappula {
 		 * Täytyy tehdä kummallekkin omat, koska muuten ei toimisi odotetusti
 		 */
 		
-		/* Laudan ulkopuolelle ei voida siirty� */
+		/* Laudan ulkopuolelle ei voida siirtyä */
 
 		if (x2 > 7 || x2 < 0 || y2 > 7 || y2 < 0) {
 			return false;
