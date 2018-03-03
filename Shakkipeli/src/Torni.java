@@ -55,6 +55,7 @@ class Torni extends Nappula{
 				}
 			}
 		}
+		}
 		
 		if (y1 == y2) {
 			if (x1 < x2) {
@@ -71,7 +72,6 @@ class Torni extends Nappula{
 					}
 				}
 			}
-		}
 		}
 		return false;
 	}

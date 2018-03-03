@@ -19,8 +19,6 @@ public class Kuningas extends Nappula{
 			return false;
 		}
 		
-		
-		
 		return false;
 	}
 }
