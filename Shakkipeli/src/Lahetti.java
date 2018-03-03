@@ -37,18 +37,18 @@ class Lahetti extends Nappula{
 		
 		/* Neljä suuntaa, pitää tarkistaa mihin suuntaan ollaan liikkumassa */
 		
-		
 		//alavasen
 		if (x1 - x2 > 0 && y1 - y2 < 0) {
 			int x = x1;
 			int y = y1;
 			
-			while (x > x2 && y < y2) {
+			while (x > x2 + 1 && y < y2 - 1) {
+				x--;
+				y++;
 				if (lauta.annaRuutu(x, y) != null)  {
 					return true;
 				}
-				x--;
-				y++;
+				
 			}
 		}
 		
@@ -57,12 +57,13 @@ class Lahetti extends Nappula{
 			int x = x1;
 			int y = y1;
 			
-			while (x > x2 && y > y2) {
+			while (x > x2 + 1&& y > y2 + 1) {
+				x--;
+				y--;
 				if (lauta.annaRuutu(x, y) != null)  {
 					return true;
 				}
-				x--;
-				y--;
+				
 			}
 		}
 		
@@ -71,12 +72,13 @@ class Lahetti extends Nappula{
 			int x = x1;
 			int y = y1;
 			
-			while (x < x2 && y > y2) {
+			while (x < x2 - 1 && y > y2 + 1) {
+				x++;
+				y--;
 				if (lauta.annaRuutu(x, y) != null)  {
 					return true;
 				}
-				x++;
-				y--;
+				
 			}
 		}
 		
@@ -85,12 +87,13 @@ class Lahetti extends Nappula{
 			int x = x1;
 			int y = y1;
 			
-			while (x < x2 && y < y2) {
+			while (x < x2 -1 && y < y2 - 1) {
+				x++;
+				y++;
 				if (lauta.annaRuutu(x, y) != null)  {
 					return true;
 				}
-				x++;
-				y++;
+				
 			}
 		}
 		
