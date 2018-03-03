@@ -67,12 +67,8 @@ public class Kuningas extends Nappula{
 				if (lauta.annaRuutu(sarake, rivi) instanceof Kuningas) {
 					continue;
 				}
-				System.out.println(sarake + ", " + rivi);
-				System.out.println("tyhjä: " + (lauta.annaRuutu(sarake, rivi) != null));
 				if(lauta.annaRuutu(sarake, rivi) != null) {
-					System.out.println("vari: " + (lauta.annaRuutu(sarake, rivi).annaVari() != this.annaVari()));
 					if(lauta.annaRuutu(sarake, rivi).annaVari() != this.annaVari()) {
-						System.out.println("ruutu: " + (lauta.annaRuutu(sarake, rivi).liikkeenTarkistus(lauta, sarake, rivi, x, y)));
 						if (lauta.annaRuutu(sarake, rivi).liikkeenTarkistus(lauta, sarake, rivi, x, y)) {
 							return true;
 						}
