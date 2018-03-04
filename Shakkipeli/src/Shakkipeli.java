@@ -34,7 +34,6 @@ public class Shakkipeli {
 			
 			String valittu = lukija.nextLine().toUpperCase();
 
-
 			switch (valittu){
 				case "O-O":
 					boolean tornitus1 = teeTornitus(false, shakkilauta);
@@ -52,19 +51,22 @@ public class Shakkipeli {
 					shakkilauta.tallenna();
 					System.exit(0);
 				default:
-					String[] siirto = valittu.split(">");
-					String ruutu1 = siirto[0].charAt(0) - 'A' +  String.valueOf(siirto[0].charAt(1));
-					String ruutu2 = siirto[1].charAt(0) - 'A' + String.valueOf(siirto[1].charAt(1));
-					boolean totuus = teeSiirto(Integer.parseInt(ruutu1.substring(0,1)),
-							Integer.parseInt(ruutu1.substring(1,2)) - 1,
-							Integer.parseInt(ruutu2.substring(0,1)),
-							Integer.parseInt(ruutu2.substring(1,2)) - 1, shakkilauta);
-					if (totuus){
+					boolean siirtoOnnistuu = false;
+					try {
+						String siirto = valittu.replaceAll("[^A-H1-8]", "");
+						int x1 = siirto.charAt(0) - 'A';
+						int x2 = siirto.charAt(2) - 'A';
+						int y1 = Integer.parseInt(siirto.charAt(1)+"")-1;
+						int y2 = Integer.parseInt(siirto.charAt(3)+"")-1;
+						siirtoOnnistuu = teeSiirto(x1, y1, x2, y2, shakkilauta);
+					} catch (Exception e) {
+						System.out.println("Epäkelpo syöte, yritä uudelleen!");
+					}
+					if(siirtoOnnistuu) {
+						shakkilauta.korota();
 						shakkilauta.vaihdaPelivuoro();
 					}
-
 			}
-		
 		}
 	}
 
@@ -81,25 +83,30 @@ public class Shakkipeli {
 	 * @return boolean, joka kertoo onnistuiko tornitus vai ei
 	 */
 	public static boolean teeTornitus(boolean pituus, Shakkilauta shakkilauta) {
+		
+		int paaty = 0;
+		if(shakkilauta.annaPelivuoro()) 
+			paaty = 7;
+		
 		boolean totuus = false;
 		if (pituus) {
-			if (shakkilauta.annaRuutu(0, 0) instanceof Torni && shakkilauta.annaRuutu(4, 0) instanceof Kuningas &&
-					((Torni) shakkilauta.annaRuutu(0, 0)).onkoMuitaValissa(shakkilauta, 0, 0, 4, 0) == false) {
-				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(0, 0), 3, 0);
-				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(4, 0), 2, 0);
-				shakkilauta.asetaRuutu(null, 0,0);
-				shakkilauta.asetaRuutu(null, 4, 0);
+			if (shakkilauta.annaRuutu(0, paaty) instanceof Torni && shakkilauta.annaRuutu(4, paaty) instanceof Kuningas &&
+					((Torni) shakkilauta.annaRuutu(0, paaty)).onkoMuitaValissa(shakkilauta, 0, paaty, 4, paaty) == false) {
+				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(0, paaty), 3, paaty);
+				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(4, paaty), 2, paaty);
+				shakkilauta.asetaRuutu(null, 0, paaty);
+				shakkilauta.asetaRuutu(null, 4, paaty);
 				totuus = true;
 			} else {
 				System.out.println("Tornitus ei onnistunut.");
 			}
 		} else {
-			if (shakkilauta.annaRuutu(7, 0) instanceof Torni && shakkilauta.annaRuutu(4, 0) instanceof Kuningas &&
-					((Torni) shakkilauta.annaRuutu(7, 0)).onkoMuitaValissa(shakkilauta, 7, 0, 4, 0) == false) {
-				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(7, 0), 5, 0);
-				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(4, 0), 6, 0);
-				shakkilauta.asetaRuutu(null, 7 ,0);
-				shakkilauta.asetaRuutu(null, 4, 0);
+			if (shakkilauta.annaRuutu(7, paaty) instanceof Torni && shakkilauta.annaRuutu(4, paaty) instanceof Kuningas &&
+					((Torni) shakkilauta.annaRuutu(7, paaty)).onkoMuitaValissa(shakkilauta, 7, paaty, 4, paaty) == false) {
+				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(7, paaty), 5, paaty);
+				shakkilauta.asetaRuutu(shakkilauta.annaRuutu(4, paaty), 6, paaty);
+				shakkilauta.asetaRuutu(null, 7 ,paaty);
+				shakkilauta.asetaRuutu(null, 4, paaty);
 				totuus = true;
 			} else {
 				System.out.println("Tornitus ei onnistunut.");
