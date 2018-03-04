@@ -84,9 +84,9 @@ public class Shakkipeli {
 	 */
 	public static boolean teeTornitus(boolean pituus, Shakkilauta shakkilauta) {
 		
-		int paaty = 0;
+		int paaty = 7;
 		if(shakkilauta.annaPelivuoro()) 
-			paaty = 7;
+			paaty = 0;
 		
 		boolean totuus = false;
 		if (pituus) {
