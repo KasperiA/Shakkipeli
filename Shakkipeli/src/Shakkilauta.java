@@ -104,7 +104,7 @@ class Shakkilauta implements Serializable {
 						} else if(paatos.equalsIgnoreCase("Torni")) {
 							lauta[x][paaty] = new Torni(pelivuoro);
 						} else if(paatos.equalsIgnoreCase("Lähetti")) {
-							lauta[x][paaty] = new Lähetti(pelivuoro);
+							lauta[x][paaty] = new Lahetti(pelivuoro);
 						} else {
 							testi = true;
 							System.out.println("Syöttö epäonnistui. Yritä uudelleen!");
