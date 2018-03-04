@@ -11,7 +11,7 @@ class Kuningatar extends Nappula {
 	}
 
 	@Override
-	public boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
+	public boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int x2, int y1, int y2) {
 
 		/* Laudan ulkopuolelle ei voida siirtyä */
 

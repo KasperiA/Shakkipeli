@@ -43,7 +43,7 @@ class Torni extends Nappula {
 	 * Palauttaa false jos ei ole
 	 */
 
-	public boolean onkoMuitaValissa(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
+	public boolean onkoMuitaValissa(Shakkilauta lauta, int x1, int x2, int y1, int y2) {
 		if (x1 == x2) {
 			if (y1 < y2) {
 				for (int i = y2 - 1; i > y1; i--) {
