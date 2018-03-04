@@ -16,15 +16,13 @@ public class Shakkipeli {
 		
 		Shakkilauta shakkilauta = new Shakkilauta(lukija);
 		shakkilauta = shakkilauta.lataa();
-		 
-		// tulee tehdä sillä scanner ei säily latauksessa ja tallennuksessa
 		if (shakkilauta == null) {
 			shakkilauta = new Shakkilauta(lukija);
 			System.out.println("Alustetaan uusi lauta");
 			shakkilauta.alusta();
 		}
-		
 		shakkilauta.asetaLukija(lukija);
+		// tulee tehdä sillä scanner ei säily latauksessa ja tallennuksessa
 		
 		while (true) {
 
@@ -50,7 +48,7 @@ public class Shakkipeli {
 						shakkilauta.vaihdaPelivuoro();
 					}
 					break;
-				case "exit":
+				case "EXIT":
 					shakkilauta.tallenna();
 					System.exit(0);
 				default:
