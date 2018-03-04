@@ -78,6 +78,41 @@ class Shakkilauta implements Serializable {
 	}
 
 	/**
+	 * Metodi käy läpi vuorossa olevan pelaajan hyökkäyspäädyn korottaakseen sinne mahdollisesti edenneen sotilaan kuningattareksi tai hevoseksi pelaajan valinnan mukaan.
+	 */
+	public void korota() {
+		
+		int paaty = 0;
+		if(pelivuoro) 
+			paaty = 7;
+			
+		for(int x = 0; x<8; x++) {
+			if(lauta[x][paaty] instanceof Sotilas) {
+				if(lauta[x][paaty].annaVari() == pelivuoro) {
+					
+					System.out.println("Ruutuun " + ('A' + x) + (paaty + 1) + " edennyt sotilas on valmis korotettavaksi");
+					System.out.println("Kirjoita 'Hevonen' tai 'Kuningatar' korottaaksesi se uudeksi nappulaksi");
+					
+					boolean testi = true;
+					while(testi) {
+						testi = false;
+						String paatos = lukija.nextLine();
+						if(paatos.equalsIgnoreCase("Hevonen")) {
+							lauta[x][paaty] = new Hevonen(pelivuoro);
+						} else if(paatos.equalsIgnoreCase("Kuningatar")) {
+							lauta[x][paaty] = new Kuningatar(pelivuoro);
+						} else {
+							testi = true;
+							System.out.println("Syöttö epäonnistui. Yritä uudelleen!");
+						}
+					}
+					break; // vain 1 sotilas voi vuorolla saavuttaa päädyn
+				}
+			}
+		}
+	}
+	
+	/**
 	 * Metodi asettaa nappulat pelin alkuasemiin ja antaa vuoron valkoiselle.
 	 */
 	public void alusta() {
