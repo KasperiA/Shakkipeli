@@ -91,7 +91,7 @@ class Shakkilauta implements Serializable {
 				if(lauta[x][paaty].annaVari() == pelivuoro) {
 					
 					System.out.println("Ruutuun " + ('A' + x) + (paaty + 1) + " edennyt sotilas on valmis korotettavaksi");
-					System.out.println("Kirjoita 'Hevonen' tai 'Kuningatar' korottaaksesi se uudeksi nappulaksi");
+					System.out.println("Kirjoita 'Hevonen', 'Kuningatar', 'Lähetti' tai 'Torni' korottaaksesi se uudeksi nappulaksi");
 					
 					boolean testi = true;
 					while(testi) {
@@ -101,6 +101,10 @@ class Shakkilauta implements Serializable {
 							lauta[x][paaty] = new Hevonen(pelivuoro);
 						} else if(paatos.equalsIgnoreCase("Kuningatar")) {
 							lauta[x][paaty] = new Kuningatar(pelivuoro);
+						} else if(paatos.equalsIgnoreCase("Torni")) {
+							lauta[x][paaty] = new Torni(pelivuoro);
+						} else if(paatos.equalsIgnoreCase("Lähetti")) {
+							lauta[x][paaty] = new Lähetti(pelivuoro);
 						} else {
 							testi = true;
 							System.out.println("Syöttö epäonnistui. Yritä uudelleen!");
