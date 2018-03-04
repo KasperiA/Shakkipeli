@@ -43,22 +43,21 @@ class Kuningatar extends Nappula {
 		return false;
 	}
 
-	
-	//Jos liikkuu suoraan, niin true, jos vinottain niin false
+	// Jos liikkuu suoraan, niin true, jos vinottain niin false
 	public boolean onkoMuitaValissa(boolean suunta, Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 
 		/* Neljä suuntaa, pitää tarkistaa mihin suuntaan ollaan liikkumassa */
 		if (suunta) {
 			if (x1 == x2) {
 				if (y1 < y2) {
-					for (int i = y2; i > y1; i--) {
+					for (int i = y2 - 1; i > y1; i--) {
 						if (lauta.annaRuutu(x2, i) != null) {
 							return true;
 						}
 					}
 				}
 				if (y1 > y2) {
-					for (int i = y1; i > y2; i--) {
+					for (int i = y1 + 1; i > y2; i--) {
 						if (lauta.annaRuutu(x2, i) != null) {
 							return true;
 						}
@@ -68,14 +67,14 @@ class Kuningatar extends Nappula {
 
 			if (y1 == y2) {
 				if (x1 < x2) {
-					for (int i = x2; i > x1; i--) {
+					for (int i = x2 - 1; i > x1; i--) {
 						if (lauta.annaRuutu(y2, i) != null) {
 							return true;
 						}
 					}
 				}
 				if (x1 > x2) {
-					for (int i = x1; i > x2; i--) {
+					for (int i = x1 + 1; i > x2; i--) {
 						if (lauta.annaRuutu(y2, i) != null) {
 							return true;
 						}
