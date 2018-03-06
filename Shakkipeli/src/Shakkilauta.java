@@ -185,7 +185,7 @@ class Shakkilauta implements Serializable {
 		Shakkilauta tmp = null;
 
 		try {
-			System.out.println("Minkä nimisestä tiedostosta haluat pelin ladattavan?");
+			System.out.println("Jos haluat ladata pelin, anna validi tiedoston nimi, jos haluat alustaa uuden, jätä syöte tyhjäksi.");
 			FileInputStream tiedosto = new FileInputStream(lukija.nextLine() + ".ser");
 			ObjectInputStream in = new ObjectInputStream(tiedosto);
 			tmp = (Shakkilauta) in.readObject();
