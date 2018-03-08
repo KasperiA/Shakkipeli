@@ -56,7 +56,7 @@ class Kuningatar extends Nappula {
 					}
 				}
 				if (y1 > y2) {
-					for (int i = y1 + 1; i > y2; i--) {
+					for (int i = y1 - 1; i > y2; i--) {
 						if (lauta.annaRuutu(x2, i) != null) {
 							return true;
 						}
@@ -73,7 +73,7 @@ class Kuningatar extends Nappula {
 					}
 				}
 				if (x1 > x2) {
-					for (int i = x1 + 1; i > x2; i--) {
+					for (int i = x1 - 1; i > x2; i--) {
 						if (lauta.annaRuutu(i, y2) != null) {
 							return true;
 						}
