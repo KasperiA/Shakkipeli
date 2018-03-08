@@ -183,17 +183,21 @@ class Shakkilauta implements Serializable {
 	public Shakkilauta lataa() {
 
 		Shakkilauta tmp = null;
+		String syote = "";
 
 		try {
 			System.out.println("Jos haluat ladata pelin, anna validi tiedoston nimi, jos haluat alustaa uuden, jätä syöte tyhjäksi.");
-			FileInputStream tiedosto = new FileInputStream(lukija.nextLine() + ".ser");
+			syote = lukija.nextLine();
+			FileInputStream tiedosto = new FileInputStream(syote + ".ser");
 			ObjectInputStream in = new ObjectInputStream(tiedosto);
 			tmp = (Shakkilauta) in.readObject();
 			in.close();
 			tiedosto.close();
 			System.out.println("Lataus onnistui.");
 		} catch (Exception e) {
-			System.out.println("Lataus epäonnistui.");
+			if(!syote.isEmpty()) {
+				System.out.println("Lataus epäonnistui.");
+			}
 		}
 		// palauttaa joko aiemmin tallennetun shakkilaudan tai null
 		return tmp;
