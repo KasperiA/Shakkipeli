@@ -64,14 +64,14 @@ class Torni extends Nappula {
 		if (y1 == y2) {
 			if (x1 < x2) {
 				for (int i = x2 - 1; i > x1; i--) {
-					if (lauta.annaRuutu(y2, i) != null) {
+					if (lauta.annaRuutu(i, y2) != null) {
 						return true;
 					}
 				}
 			}
 			if (x1 > x2) {
 				for (int i = x1 + 1; i > x2; i--) {
-					if (lauta.annaRuutu(y2, i) != null) {
+					if (lauta.annaRuutu(i, y2) != null) {
 						return true;
 					}
 				}
