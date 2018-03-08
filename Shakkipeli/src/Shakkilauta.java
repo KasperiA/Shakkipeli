@@ -158,14 +158,18 @@ class Shakkilauta implements Serializable {
 	 */
 	public void tallenna() {
 
+		String syote = "";
 		try {
-			System.out.println("Minkä nimiseen tiedostoon haluat pelin tallennettavan?");
-			FileOutputStream tiedosto = new FileOutputStream(lukija.nextLine() + ".ser");
-			ObjectOutputStream out = new ObjectOutputStream(tiedosto);
-			out.writeObject(this);
-			out.close();
-			tiedosto.close();
-			System.out.println("Tallennus onnistui.");
+			System.out.println("Minkä nimiseen tiedostoon haluat pelin tallennettavan? (Jätä tyhjäksi, jos et halua.)");
+			syote = lukija.nextLine();
+			if(!syote.isEmpty()){
+				FileOutputStream tiedosto = new FileOutputStream(syote + ".ser");
+				ObjectOutputStream out = new ObjectOutputStream(tiedosto);
+				out.writeObject(this);
+				out.close();
+				tiedosto.close();
+				System.out.println("Tallennus onnistui.");
+			}
 		} catch (Exception e) {
 			System.out.println("Tallennus epäonnistui.");
 		}
