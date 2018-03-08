@@ -93,7 +93,6 @@ class Kuningatar extends Nappula {
 						return true;
 					}
 					
-					System.out.println("ALAVASEN");
 				}
 			}
 			
@@ -109,7 +108,6 @@ class Kuningatar extends Nappula {
 						return true;
 					}
 					
-					System.out.println("YLÄVASEN");
 				}
 			}
 			
@@ -125,7 +123,6 @@ class Kuningatar extends Nappula {
 						return true;
 					}
 					
-					System.out.println("YLÄOIKEA");
 					
 				}
 			}
@@ -142,7 +139,6 @@ class Kuningatar extends Nappula {
 						return true;
 					}
 					
-					System.out.println("ALAOIKEA");
 				}
 			}
 		}
