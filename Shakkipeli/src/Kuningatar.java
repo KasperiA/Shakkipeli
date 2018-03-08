@@ -11,7 +11,7 @@ class Kuningatar extends Nappula {
 	}
 
 	@Override
-	public boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int x2, int y1, int y2) {
+	public boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 
 		/* Laudan ulkopuolelle ei voida siirtyä */
 
@@ -28,9 +28,9 @@ class Kuningatar extends Nappula {
 		} catch (Exception e) {
 			nappulaVari = false;
 		}
-
+		
 		if (x1 == x2 || y1 == y2) {
-			if (!onkoMuitaValissa(true, lauta, x1, x2, y1, y2) && (nappulaVari || lauta.annaRuutu(x2, y2) == null)) {
+			if (!onkoMuitaValissa(true, lauta, x1, y1, x2, y2) && (nappulaVari || lauta.annaRuutu(x2, y2) == null)) {
 				return true;
 			}
 		} else {
@@ -45,7 +45,6 @@ class Kuningatar extends Nappula {
 
 	// Jos liikkuu suoraan, niin true, jos vinottain niin false
 	public boolean onkoMuitaValissa(boolean suunta, Shakkilauta lauta, int x1, int y1, int x2, int y2) {
-
 		/* Neljä suuntaa, pitää tarkistaa mihin suuntaan ollaan liikkumassa */
 		if (suunta) {
 			if (x1 == x2) {
@@ -82,63 +81,68 @@ class Kuningatar extends Nappula {
 				}
 			}
 		} else {
-			// alavasen
+			//alavasen
 			if (x1 - x2 > 0 && y1 - y2 < 0) {
 				int x = x1;
 				int y = y1;
-
+				
 				while (x > x2 + 1 && y < y2 - 1) {
 					x--;
 					y++;
-					if (lauta.annaRuutu(x, y) != null) {
+					if (lauta.annaRuutu(x, y) != null)  {
 						return true;
 					}
-
+					
+					System.out.println("ALAVASEN");
 				}
 			}
-
-			// ylävasen
+			
+			//ylävasen
 			if (x1 - x2 > 0 && y1 - y2 > 0) {
 				int x = x1;
 				int y = y1;
-
+				
 				while (x > x2 + 1 && y > y2 + 1) {
 					x--;
 					y--;
-					if (lauta.annaRuutu(x, y) != null) {
+					if (lauta.annaRuutu(x, y) != null)  {
 						return true;
 					}
-
+					
+					System.out.println("YLÄVASEN");
 				}
 			}
-
-			// yläoikea
+			
+			//yläoikea
 			if (x1 - x2 < 0 && y1 - y2 > 0) {
 				int x = x1;
 				int y = y1;
-
+				
 				while (x < x2 - 1 && y > y2 + 1) {
 					x++;
 					y--;
-					if (lauta.annaRuutu(x, y) != null) {
+					if (lauta.annaRuutu(x, y) != null)  {
 						return true;
 					}
-
+					
+					System.out.println("YLÄOIKEA");
+					
 				}
 			}
-
-			// alaoikea
+			
+			//alaoikea
 			if (x1 - x2 < 0 && y1 - y2 < 0) {
 				int x = x1;
 				int y = y1;
-
-				while (x < x2 - 1 && y < y2 - 1) {
+				
+				while (x < x2 -1 && y < y2 - 1) {
 					x++;
 					y++;
-					if (lauta.annaRuutu(x, y) != null) {
+					if (lauta.annaRuutu(x, y) != null)  {
 						return true;
 					}
-
+					
+					System.out.println("ALAOIKEA");
 				}
 			}
 		}
