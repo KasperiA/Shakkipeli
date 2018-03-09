@@ -1,4 +1,9 @@
 
+/**
+ * Luokka mallintaa hevosta
+ * @author Kasperi Aavasaari
+ *
+ */
 class Hevonen extends Nappula {
 
 	public Hevonen(boolean vari) {

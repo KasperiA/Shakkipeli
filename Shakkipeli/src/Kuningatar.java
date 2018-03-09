@@ -1,4 +1,9 @@
 
+/**
+ * Luokka mallintaa Kuningatarta
+ * @author Kasperi Aavasaari
+ *
+ */
 class Kuningatar extends Nappula {
 
 	public Kuningatar(boolean vari) {
@@ -18,7 +23,11 @@ class Kuningatar extends Nappula {
 		if (x2 > 7 || x2 < 0 || y2 > 7 || y2 < 0) {
 			return false;
 		}
-
+		
+		/*
+		 * Täytyy tarkistaa loppuruudun väri jo metodin alussa, koska muutem on mahdollista saada NullPointerExcption
+		 */
+		
 		boolean nappulaVari = false;
 
 		try {
@@ -28,6 +37,10 @@ class Kuningatar extends Nappula {
 		} catch (Exception e) {
 			nappulaVari = false;
 		}
+		
+		/*
+		 * Jos Kuningatar liikkuu suoraan, kun toinen koordinaateista pysyy samana eli x1 == x2 tai y1 == y2
+		 */
 		
 		if (x1 == x2 || y1 == y2) {
 			if (!onkoMuitaValissa(true, lauta, x1, y1, x2, y2) && (nappulaVari || lauta.annaRuutu(x2, y2) == null)) {
@@ -43,9 +56,12 @@ class Kuningatar extends Nappula {
 		return false;
 	}
 
-	// Jos liikkuu suoraan, niin true, jos vinottain niin false
+	/*
+	 * Kuningattaren onkoMuitaValissa metodi eroaa lähetin ja tornin vastaavista metodeista vain sillä,
+	 * että tarkastetaan liikutaanko suoraan vai vinoittain.
+	 * Jos liikutaan suoraan, niin suunta = true ja jos vinoittain niin suunta = false
+	 */
 	public boolean onkoMuitaValissa(boolean suunta, Shakkilauta lauta, int x1, int y1, int x2, int y2) {
-		/* Neljä suuntaa, pitää tarkistaa mihin suuntaan ollaan liikkumassa */
 		if (suunta) {
 			if (x1 == x2) {
 				if (y1 < y2) {

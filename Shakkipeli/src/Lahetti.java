@@ -1,4 +1,9 @@
-
+ 
+/**
+ * Luokka mallintaa Lähettiä
+ * @author Kasperi Aavasaari
+ *
+ */
 class Lahetti extends Nappula{
 	
 	public Lahetti(boolean vari) {
@@ -14,11 +19,16 @@ class Lahetti extends Nappula{
 	public boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		
 		/* Laudan ulkopuolelle ei voida siirtyä,
-		 * Eikä muuten kuin vinottain*/
+		 * Eikä muuten kuin vinottain
+		 * Nappula ei liiku vinoittain, jos x- tai y-koordinaateista toinen on sama, ja toinen on eri*/
 
 		if (x2 > 7 || x2 < 0 || y2 > 7 || y2 < 0 || (x1 != x2 && y1 == y2) || (x1 == x2 && y1 != y2)) {
 			return false;
 		}
+		
+		/*
+		 * Täytyy tarkistaa loppuruudun väri jo metodin alussa, koska muutem on mahdollista saada NullPointerExcption
+		 */
 		
 		boolean nappulaVari = false;
 
@@ -41,11 +51,20 @@ class Lahetti extends Nappula{
 		return false;
 	}
 	
-	/*Tarkistaa onko alku ja loppuruudun välissä muita nappuloita, jos ei ole niin palauttaa false*/
-	
+	/**
+	 * Tarkistaa aonko alku- ja loppuruudun välillä muita nappuloita. Lähetti ei voi hyppiä nappuloiden yli
+	 * @param lauta		Lauta, jossa tarkistetaan onko muita nappuloita valissa
+	 * @param x1		Alkuruuudun x-koordinaatti
+	 * @param y1		Alkuruudun y-koordinaatti
+	 * @param x2		Loppuruudun x-koordinaatti
+	 * @param y2		Loppuruudun y-koordinaatti
+	 * @return			Palauttaa true, jos muita nappuloita on alku-ja loppuruudun välissä, muuten false
+	 */
 	public boolean onkoMuitaValissa(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		
-		/* Neljä suuntaa, pitää tarkistaa mihin suuntaan ollaan liikkumassa */
+		/* Ideana se, että riippuen suunnasta, johon liikutaan, niin x1 - x2 ja y1 - y2 saavat joko posiitiivisen tai negatiivisen arvon.
+		 * Näiden perusteella valitaan suunta, johon lädetään vinoittain tarkistamaan onko välissä muita nappuloita
+		 */
 		
 		//alavasen
 		if (x1 - x2 > 0 && y1 - y2 < 0) {
