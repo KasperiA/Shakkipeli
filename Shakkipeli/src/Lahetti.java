@@ -27,7 +27,8 @@ class Lahetti extends Nappula{
 		}
 		
 		/*
-		 * Täytyy tarkistaa loppuruudun väri jo metodin alussa, koska muutem on mahdollista saada NullPointerExcption
+		 * Täytyy tarkistaa loppuruudussa olevan nappulan väri jo metodin alussa, koska muutem on mahdollista saada NullPointerExcption
+		 * Jos nappulaVari on true, niin nappulat ovat erivärisiä
 		 */
 		
 		boolean nappulaVari = false;
@@ -40,7 +41,11 @@ class Lahetti extends Nappula{
 			nappulaVari = false;
 		}
 		
-		/*Nappula liikkuu vinoittain, kun sen alku- ja loppukoordinaattien erotuksien itseisarvot ovat yhtä suuret |x1 - x2| = |y1 - y2| */
+		/*
+		 * Tarkistetaan, ettei siirron välissä ole nappuloita,
+		 * nappula liikkuu vinoittain eli nappulan x-koordinaattien ja y-koordinaattien erotuksen itseisarvot ovat yhtä suuret
+		 * ja että loppuruutu on tyhjä tai siinä on erivärinen nappula
+		 */
 		
 		if (!onkoMuitaValissa(lauta, x1, y1, x2, y2) && Math.abs(x1 - x2) == Math.abs(y1 - y2) && (lauta.annaRuutu(x2, y2) == null || nappulaVari)) {
 			return true;

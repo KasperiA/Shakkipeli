@@ -36,10 +36,26 @@ class Sotilas extends Nappula {
 		if (x2 > 7 || x2 < 0 || y2 > 7 || y2 < 0) {
 			return false;
 		}
+		
+		/*
+		 * Täytyy tarkistaa loppuruudun nappulan väri jo metodin alussa, koska muuten on mahdollista saada NullPointerException
+		 * Jos nappulaVari on true, niin nappulat ovat erivärisiä
+		 */
+		
+		boolean nappulaVari = false;
+
+		try {
+			if (lauta.annaRuutu(x2, y2).annaVari() != this.annaVari()) {
+				nappulaVari = true;
+			}
+		} catch (Exception e) {
+			nappulaVari = false;
+		}
 
 		/*
-		 * Vain ensimmäisellä siirrolla voidaan liikkua kaksi ruutua eteenpäin
-		 * samalla linjalla
+		 * Vain ensimmäisellä siirrolla voidaan liikkua kaksi ruutua eteenpäin samalla linjalla
+		 * Tarkistetaan, onko nappula musta vai valkoinen, onko kyseessä ensimmäinen siirto, liikutaanko samalla linjalla,
+		 * liike saa olla 2 ruudun pituinen, loppuruudun täytyy olla tyhjä ja välissä oleva ruutu täytyy myös olla tyhjä
 		 */
 
 		if ((!this.annaVari() && ensimmainenSiirto && x1 == x2 && y1 - y2 == 2 && lauta.annaRuutu(x2, y2) == null && lauta.annaRuutu(x2, y2 + 1) == null)
@@ -48,20 +64,28 @@ class Sotilas extends Nappula {
 			return true;
 		}
 
-		/* Normaali yhden ruudun liike eteenpäin samalla linjalla */
+		/* 
+		 * Normaali yhden ruudun liike eteenpäin samalla linjalla 
+		 * Tarkistetaan, onko kyseessä musta vai valkoinen nappula, liikutaanko samalla linjalla, loppuruutu täytyy olla tyhjä ja liikkua saa vain yhden ruudun verran
+		 */
 
+		
 		if ((!this.annaVari() && x1 == x2 && lauta.annaRuutu(x2, y2) == null && y1 - y2 == 1)
 				|| (this.annaVari() && x1 == x2 && lauta.annaRuutu(x2, y2) == null && y1 - y2 == -1)) {
 			this.ensimmainenSiirto = false;
 			return true;
 		}
 
-		/* Syöminen yhden ruudun verran oikealle tai vasemmalle */
+		/* 
+		 * Syöminen yhden ruudun verran oikealle tai vasemmalle
+		 * Tarkistetaan, onko kyseessä musta vai valkoinen nappula, liikkua voi vain yhden ruudun oikealle tai vasemmalle,
+		 * eteenpäin voi liikkua vain yhden ruudun, loppuruudun nappula on erivärinen
+		 */
 
-		if ((!this.annaVari() && x1 - x2 == 1 && y1 - y2 == 1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())
-				|| (!this.annaVari() && x1 - x2 == -1 && y1 - y2 == 1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())
-				|| (this.annaVari() && x1 - x2 == 1 && y1 - y2 == -1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())
-				|| (this.annaVari() && x1 - x2 == -1 && y1 - y2 == -1 && lauta.annaRuutu(x2, y2).annaVari() != this.annaVari())) {
+		if ((!this.annaVari() && x1 - x2 == 1 && y1 - y2 == 1 && nappulaVari)
+				|| (!this.annaVari() && x1 - x2 == -1 && y1 - y2 == 1 && nappulaVari)
+				|| (this.annaVari() && x1 - x2 == 1 && y1 - y2 == -1 && nappulaVari)
+				|| (this.annaVari() && x1 - x2 == -1 && y1 - y2 == -1 && nappulaVari)) {
 			this.ensimmainenSiirto = false;
 			return true;
 		}

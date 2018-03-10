@@ -71,13 +71,6 @@ public class Shakkipeli {
 	}
 
 	/**
-	 * @author Jaakko Kittilä
-	 * @return String
-	 * Kysytään käyttäjältä, mitä pelissä tehdään seuraavaksi
-	 */
-
-
-	/**
 	 * Metodi erikoissiirtoa, tornitusta varten
 	 * @param pituus
 	 * @return boolean, joka kertoo onnistuiko tornitus vai ei
@@ -122,7 +115,7 @@ public class Shakkipeli {
 	 * @param x2 Loppuruudun koordinaatit
 	 * @param y2
 	 * @param shakkilauta lauta, jossa siiretään nappuloita
-	 * @return palauttaa totuusarvon riippuen tehtiinki siirto vai ei
+	 * @return palauttaa totuusarvon riippuen tehtiinkö siirto vai ei
 	 */
 	public static boolean teeSiirto(int x1, int y1, int x2, int y2, Shakkilauta shakkilauta){
 		

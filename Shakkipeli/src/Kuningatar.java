@@ -1,4 +1,4 @@
-
+﻿
 /**
  * Luokka mallintaa Kuningatarta
  * @author Kasperi Aavasaari
@@ -25,7 +25,8 @@ class Kuningatar extends Nappula {
 		}
 		
 		/*
-		 * Täytyy tarkistaa loppuruudun väri jo metodin alussa, koska muutem on mahdollista saada NullPointerExcption
+		 * Täytyy tarkistaa loppuruudussa olevan nappulan väri jo metodin alussa, koska muutem on mahdollista saada NullPointerExcption
+		 * Jos nappulaVari on true, niin nappulat ovat erivärisiä
 		 */
 		
 		boolean nappulaVari = false;
@@ -39,7 +40,10 @@ class Kuningatar extends Nappula {
 		}
 		
 		/*
-		 * Jos Kuningatar liikkuu suoraan, kun toinen koordinaateista pysyy samana eli x1 == x2 tai y1 == y2
+		 * Tarkistetaan liikkuuko kuningatar suoraan, eli pysyykö x- tai y-koordinaatti samana,
+		 * jos ei liikuta suoraan niin silloin liikutaan vinoittain
+		 * Siirron oikeellisuuden tarkistus toimii savalla tavoin kun tornin ja lähetin siirontarkistus,
+		 * paitsi metodiin on lisätty true tai false riippuen tavasta liikkua
 		 */
 		
 		if (x1 == x2 || y1 == y2) {
