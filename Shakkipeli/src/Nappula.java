@@ -13,12 +13,12 @@ abstract class Nappula implements Serializable {
 	
 	/**
 	 * Metodi tarkastaa onko jokin liike sallittu
-	 * @param lauta     Lauta, jossa siirto tehdään
-	 * @param x1        Alkuruudun x-koordinaatti
-	 * @param y1		Alkuruudun y-koordinaatti
-	 * @param x2		Loppuruudun x-koordinaatti
-	 * @param y2		Loppuruudun y-koordinaatti
-	 * @return true, jos mahdolliden, false jos ei
+	 * @param lauta Shakkilauta, jossa siirto tehdään
+	 * @param x1 Alkuruudun x-koordinaatti
+	 * @param y1 Alkuruudun y-koordinaatti
+	 * @param x2 Loppuruudun x-koordinaatti
+	 * @param y2 Loppuruudun y-koordinaatti
+	 * @return true, jos mahdollinen, false jos ei
 	 */
 	
 	public abstract boolean liikkeenTarkistus(Shakkilauta lauta, int x1, int y1, int x2, int y2);

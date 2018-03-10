@@ -58,12 +58,12 @@ class Lahetti extends Nappula{
 	
 	/**
 	 * Tarkistaa aonko alku- ja loppuruudun välillä muita nappuloita. Lähetti ei voi hyppiä nappuloiden yli
-	 * @param lauta		Lauta, jossa tarkistetaan onko muita nappuloita valissa
-	 * @param x1		Alkuruuudun x-koordinaatti
-	 * @param y1		Alkuruudun y-koordinaatti
-	 * @param x2		Loppuruudun x-koordinaatti
-	 * @param y2		Loppuruudun y-koordinaatti
-	 * @return			Palauttaa true, jos muita nappuloita on alku-ja loppuruudun välissä, muuten false
+	 * @param lauta	Shakkilauta, jossa tarkistetaan onko muita nappuloita valissa
+	 * @param x1 Alkuruuudun x-koordinaatti
+	 * @param y1 Alkuruudun y-koordinaatti
+	 * @param x2 Loppuruudun x-koordinaatti
+	 * @param y2 Loppuruudun y-koordinaatti
+	 * @return Palauttaa true, jos muita nappuloita on alku-ja loppuruudun välissä, muuten false
 	 */
 	public boolean onkoMuitaValissa(Shakkilauta lauta, int x1, int y1, int x2, int y2) {
 		
