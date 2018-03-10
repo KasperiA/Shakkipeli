@@ -20,7 +20,7 @@ public class Kuningas extends Nappula{
 		}
 		
 		/*
-		 * Täytyy tarkistaa loppuruudussa olevan nappulan väri jo metodin alussa, koska muutem on mahdollista saada NullPointerExcption
+		 * Täytyy tarkistaa loppuruudussa olevan nappulan väri jo metodin alussa, koska muuten on mahdollista saada NullPointerExcption
 		 * Jos nappulaVari on true, niin nappulat ovat erivärisiä
 		 */
 		
