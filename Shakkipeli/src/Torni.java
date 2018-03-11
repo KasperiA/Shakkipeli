@@ -1,4 +1,10 @@
 
+/**
+ * Luokka mallintaa Tornia
+ * @author Kasperi
+ *
+ */
+
 class Torni extends Nappula {
 
 	public Torni(boolean vari) {

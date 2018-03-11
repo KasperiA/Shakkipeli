@@ -1,4 +1,10 @@
 
+/**
+ * Luokka mallintaa kuningasta
+ * @author Kasperi Aavasaari
+ *
+ */
+
 public class Kuningas extends Nappula{
 	
 	public Kuningas(boolean vari) {
@@ -88,7 +94,7 @@ public class Kuningas extends Nappula{
 		 */
 		for (int sarake = 0; sarake < 8; sarake++) {
 			for(int rivi = 0; rivi < 8; rivi++) {
-				if (lauta.annaRuutu(sarake, rivi) instanceof Kuningas && lauta.annaRuutu(sarake, rivi).annaVari() == this.annaVari()) {
+				if (lauta.annaRuutu(sarake, rivi) instanceof Kuningas) {
 					continue;
 				}
 				if(lauta.annaRuutu(sarake, rivi) != null) {
